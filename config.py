@@ -14,8 +14,11 @@ class Config:
     MAIL_USE_TLS = os.environ.get('MAIL_USE_TLS') is not None
     MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
-    FREEZER_RELATIVE_URLS = False
-    FREEZER_DESTINATION = os.path.join(os.path.expanduser('~'), 'portfolio_build')
+    
+    # Frozen-Flask configuration
+    FREEZER_RELATIVE_URLS = True
+    FREEZER_DESTINATION = os.path.join(basedir, 'build')
     FREEZER_DEFAULT_MIMETYPE = 'text/html'
     FREEZER_IGNORE_MIMETYPE_WARNINGS = True
-    FREEZER_BASE_URL = 'http://localhost' 
+    FREEZER_REMOVE_EXTRA_FILES = False  # Don't remove static files
+    FREEZER_BASE_URL = 'https://bb01010101.github.io/portfolio/' 
