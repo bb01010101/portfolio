@@ -4,6 +4,8 @@ from app.main import bp
 from app.models import Project, Experience, Achievement
 import smtplib
 from email.mime.text import MIMEText
+import markdown2
+import os
 
 @bp.route('/')
 def index():
@@ -96,3 +98,35 @@ def contact_submit():
         return jsonify({'status': 'success'})
     except Exception as e:
         return jsonify({'status': 'error', 'message': str(e)}), 500 
+
+@bp.route('/blog')
+def blog():
+    posts = []
+    blog_dir = os.path.join(app.static_folder, 'blog')
+    for filename in os.listdir(blog_dir):
+        if filename.endswith('.md'):
+            with open(os.path.join(blog_dir, filename)) as f:
+                content = f.read()
+                html = markdown2.markdown(content, extras=['metadata'])
+                posts.append({
+                    'slug': filename[:-3],
+                    'title': html.metadata.get('title', 'Untitled'),
+                    'date': html.metadata.get('date', ''),
+                    'preview': html.metadata.get('preview', ''),
+                    'content': html
+                })
+    posts.sort(key=lambda x: x['date'], reverse=True)
+    return render_template('blog.html', posts=posts)
+
+@bp.route('/blog/<slug>')
+def blog_post(slug):
+    with open(os.path.join(app.static_folder, 'blog', f'{slug}.md')) as f:
+        content = f.read()
+        html = markdown2.markdown(content, extras=['metadata'])
+        post = {
+            'slug': slug,
+            'title': html.metadata.get('title', 'Untitled'),
+            'date': html.metadata.get('date', ''),
+            'content': html
+        }
+    return render_template('blog_post.html', post=post) 
