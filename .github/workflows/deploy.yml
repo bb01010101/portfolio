@@ -35,15 +35,34 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Debug environment
+        run: |
+          echo "Current directory:"
+          pwd
+          echo "\nDirectory structure:"
+          tree || ls -R
+          echo "\nChecking app/static/css:"
+          ls -la app/static/css/
+
       - name: Build static site
         run: |
+          # Clean build directory
+          rm -rf build
+          mkdir -p build
+          
+          # Run freeze script
           python freeze.py
-          mkdir -p build/static
-          cp -r app/static/* build/static/
-          # Ensure index.html exists in root
-          if [ ! -f build/index.html ]; then
-            cp build/main/index.html build/index.html 2>/dev/null || true
-          fi
+          
+          # Ensure static directory exists and copy files
+          mkdir -p build/static/css
+          cp -rv app/static/css/style.css build/static/css/
+          
+          # Debug build directory
+          echo "Build directory contents:"
+          tree build || ls -R build
+          
+          # Create .nojekyll file
+          touch build/.nojekyll
 
       - name: Setup Pages
         uses: actions/configure-pages@v3
