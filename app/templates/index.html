@@ -1,37 +1,39 @@
 {% extends "base.html" %}
 
+{% block title %}Brian Boler - Software Engineer{% endblock %}
+
 {% block content %}
 <div class="welcome-section">
-    <h1>Welcome, Brian</h1>
-    <p class="subtitle">Software Engineer & Data Scientist showcasing projects and experience</p>
+    <h1>Hi, I'm Brian Boler</h1>
+    <p class="subtitle">I'm a software engineer specializing in machine learning and data science. I build scalable solutions that solve real-world problems.</p>
 </div>
 
 <div class="card-grid">
-    <a href="{{ url_for('main.projects') }}" class="card card-green">
+    <a href="{{ url_for('main.projects') }}" class="card">
         <div class="card-icon">
             <i data-feather="code"></i>
         </div>
         <h2>Projects</h2>
-        <p>View my portfolio of technical projects</p>
+        <p>Explore my technical projects and contributions</p>
     </a>
 
-    <a href="{{ url_for('main.experience') }}" class="card card-blue">
+    <a href="{{ url_for('main.experience') }}" class="card">
         <div class="card-icon">
             <i data-feather="briefcase"></i>
         </div>
         <h2>Experience</h2>
-        <p>See my professional background</p>
+        <p>My professional journey and achievements</p>
     </a>
 
-    <a href="{{ url_for('main.skills') }}" class="card card-purple">
+    <a href="{{ url_for('main.skills') }}" class="card">
         <div class="card-icon">
-            <i data-feather="award"></i>
+            <i data-feather="tool"></i>
         </div>
         <h2>Skills</h2>
         <p>Technical skills and expertise</p>
     </a>
 
-    <a href="{{ url_for('main.resume') }}" class="card card-orange">
+    <a href="{{ url_for('main.resume') }}" class="card">
         <div class="card-icon">
             <i data-feather="file-text"></i>
         </div>
