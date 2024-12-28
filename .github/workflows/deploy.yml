@@ -1,20 +1,32 @@
-name: Deploy to GitHub Pages
+name: Deploy static content to Pages
 
 on:
   push:
-    branches: [ main ]
+    branches: ["main"]
+
+  workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
-  build-and-deploy:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v3
 
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: '3.9'
 
@@ -28,11 +40,19 @@ jobs:
           python freeze.py
           mkdir -p build/static
           cp -r app/static/* build/static/
-          touch build/.nojekyll
+          # Ensure index.html exists in root
+          if [ ! -f build/index.html ]; then
+            cp build/main/index.html build/index.html 2>/dev/null || true
+          fi
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: 'build'
 
       - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@4.1.5
-        with:
-          branch: gh-pages
-          folder: build
-          token: ${{ secrets.GITHUB_TOKEN }} 
+        id: deployment
+        uses: actions/deploy-pages@v2 
