@@ -1,7 +1,9 @@
-from flask import render_template, jsonify
+from flask import render_template, jsonify, request
 from flask_login import login_required
 from app.main import bp
 from app.models import Project, Experience, Achievement
+import smtplib
+from email.mime.text import MIMEText
 
 @bp.route('/')
 def index():
@@ -59,4 +61,38 @@ def get_profile():
             'tools': ['Docker', 'AWS', 'Git']
         }
     }
-    return jsonify(profile) 
+    return jsonify(profile)
+
+@bp.route('/skills')
+def skills():
+    skills = {
+        'languages': ['Python', 'JavaScript', 'Java', 'SQL'],
+        'frameworks': ['TensorFlow', 'PyTorch', 'React', 'Flask'],
+        'tools': ['Docker', 'AWS', 'Git', 'Linux']
+    }
+    return render_template('skills.html', skills=skills)
+
+@bp.route('/contact')
+def contact():
+    return render_template('contact.html')
+
+@bp.route('/api/contact', methods=['POST'])
+def contact_submit():
+    data = request.get_json()
+    
+    # Create email message
+    msg = MIMEText(f"From: {data['name']} ({data['email']})\n\n{data['message']}")
+    msg['Subject'] = f"Portfolio Contact: {data['name']}"
+    msg['From'] = app.config['MAIL_USERNAME']
+    msg['To'] = 'brian.boler@example.com'
+
+    try:
+        # Send email
+        with smtplib.SMTP(app.config['MAIL_SERVER'], app.config['MAIL_PORT']) as server:
+            if app.config['MAIL_USE_TLS']:
+                server.starttls()
+            server.login(app.config['MAIL_USERNAME'], app.config['MAIL_PASSWORD'])
+            server.send_message(msg)
+        return jsonify({'status': 'success'})
+    except Exception as e:
+        return jsonify({'status': 'error', 'message': str(e)}), 500 

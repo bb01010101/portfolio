@@ -1,50 +1,58 @@
 {% extends "base.html" %}
 
 {% block content %}
-<section class="hero">
-    <div class="hero-content">
-        <h1 class="hero-title">Brian Boler</h1>
-        <h2 class="hero-subtitle">Software Engineer & Data Scientist</h2>
-        <p class="hero-description">Building innovative solutions with AI and Machine Learning</p>
-        <div class="hero-cta">
-            <a href="{{ url_for('main.projects') }}" class="btn btn-primary">View Projects</a>
-            <a href="{{ url_for('main.resume') }}" class="btn btn-secondary">Download Resume</a>
-        </div>
-    </div>
-</section>
+<div class="welcome-section">
+    <h1>Welcome, Brian</h1>
+    <p class="subtitle">Software Engineer & Data Scientist showcasing projects and experience</p>
+</div>
 
-<section class="skills-section">
-    <div class="container">
-        <h2>Skills & Expertise</h2>
-        <div class="skills-grid">
-            <div class="skill-category">
-                <h3>Languages</h3>
-                <ul>
-                    <li>Python</li>
-                    <li>JavaScript</li>
-                    <li>Java</li>
-                    <li>SQL</li>
-                </ul>
-            </div>
-            <div class="skill-category">
-                <h3>Frameworks</h3>
-                <ul>
-                    <li>TensorFlow</li>
-                    <li>PyTorch</li>
-                    <li>React</li>
-                    <li>Flask</li>
-                </ul>
-            </div>
-            <div class="skill-category">
-                <h3>Tools</h3>
-                <ul>
-                    <li>Docker</li>
-                    <li>AWS</li>
-                    <li>Git</li>
-                    <li>Linux</li>
-                </ul>
-            </div>
+<div class="card-grid">
+    <a href="{{ url_for('main.projects') }}" class="card card-green">
+        <div class="card-icon">
+            <i data-feather="code"></i>
         </div>
-    </div>
-</section>
+        <h2>Projects</h2>
+        <p>View my portfolio of technical projects</p>
+    </a>
+
+    <a href="{{ url_for('main.experience') }}" class="card card-blue">
+        <div class="card-icon">
+            <i data-feather="briefcase"></i>
+        </div>
+        <h2>Experience</h2>
+        <p>See my professional background</p>
+    </a>
+
+    <a href="{{ url_for('main.skills') }}" class="card card-purple">
+        <div class="card-icon">
+            <i data-feather="award"></i>
+        </div>
+        <h2>Skills</h2>
+        <p>Technical skills and expertise</p>
+    </a>
+
+    <a href="{{ url_for('main.resume') }}" class="card card-orange">
+        <div class="card-icon">
+            <i data-feather="file-text"></i>
+        </div>
+        <h2>Resume</h2>
+        <p>Download my full resume</p>
+    </a>
+
+    <a href="https://github.com/bb01010101" class="card card-red">
+        <div class="card-icon">
+            <i data-feather="github"></i>
+        </div>
+        <h2>GitHub</h2>
+        <p>Check out my open source work</p>
+    </a>
+
+    <a href="{{ url_for('main.contact') }}" class="card card-pink">
+        <div class="card-icon">
+            <i data-feather="mail"></i>
+        </div>
+        <h2>Contact</h2>
+        <p>Get in touch with me</p>
+    </a>
+</div>
 {% endblock %} 
