@@ -12,14 +12,14 @@ def projects():
             'title': 'Machine Learning Pipeline',
             'description': 'Automated ML pipeline for data processing and model training',
             'technologies': ['Python', 'TensorFlow', 'Docker'],
-            'image': 'ml_pipeline.jpg',
+            'icon': 'cpu',
             'github_link': 'https://github.com/brianboler/ml-pipeline'
         },
         {
             'title': 'Data Visualization Dashboard',
             'description': 'Interactive dashboard for complex data analysis',
             'technologies': ['React', 'D3.js', 'Node.js'],
-            'image': 'data_viz.jpg',
+            'icon': 'bar-chart-2',
             'github_link': 'https://github.com/brianboler/data-viz'
         }
     ]

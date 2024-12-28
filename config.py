@@ -15,7 +15,7 @@ class Config:
     MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
     FREEZER_RELATIVE_URLS = False
-    FREEZER_DESTINATION = os.path.join(basedir, 'build')
+    FREEZER_DESTINATION = os.path.join(os.path.expanduser('~'), 'portfolio_build')
     FREEZER_DEFAULT_MIMETYPE = 'text/html'
     FREEZER_IGNORE_MIMETYPE_WARNINGS = True
     FREEZER_BASE_URL = 'http://localhost' 
