@@ -4,17 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Brian Boler - Portfolio{% endblock %}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css', _external=True) }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/feather-icons"></script>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-XXXXXXXXXX');
-    </script>
 </head>
 <body>
     <nav class="navbar">
@@ -40,22 +32,5 @@
         feather.replace();
     </script>
     {% block scripts %}{% endblock %}
-
-    <button id="darkModeToggle" class="theme-toggle">
-        <i data-feather="moon"></i>
-    </button>
-
-    <script>
-    const darkModeToggle = document.getElementById('darkModeToggle');
-    const icon = darkModeToggle.querySelector('i');
-
-    darkModeToggle.addEventListener('click', () => {
-        document.body.classList.toggle('dark-mode');
-        icon.setAttribute('data-feather', 
-            document.body.classList.contains('dark-mode') ? 'sun' : 'moon'
-        );
-        feather.replace();
-    });
-    </script>
 </body>
 </html> 

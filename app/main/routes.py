@@ -1,11 +1,5 @@
-from flask import render_template, jsonify, request
-from flask_login import login_required
+from flask import render_template, jsonify, request, current_app
 from app.main import bp
-from app.models import Project, Experience, Achievement
-import smtplib
-from email.mime.text import MIMEText
-import markdown2
-import os
 
 @bp.route('/')
 def index():
@@ -51,20 +45,6 @@ def experience():
 def resume():
     return render_template('resume.html')
 
-@bp.route('/api/profile')
-def get_profile():
-    profile = {
-        'name': 'Brian Boler',
-        'title': 'Software Engineer & Data Scientist',
-        'bio': 'Experienced software engineer specializing in machine learning and data science',
-        'skills': {
-            'languages': ['Python', 'JavaScript', 'Java'],
-            'frameworks': ['TensorFlow', 'PyTorch', 'React'],
-            'tools': ['Docker', 'AWS', 'Git']
-        }
-    }
-    return jsonify(profile)
-
 @bp.route('/skills')
 def skills():
     skills = {
@@ -72,61 +52,4 @@ def skills():
         'frameworks': ['TensorFlow', 'PyTorch', 'React', 'Flask'],
         'tools': ['Docker', 'AWS', 'Git', 'Linux']
     }
-    return render_template('skills.html', skills=skills)
-
-@bp.route('/contact')
-def contact():
-    return render_template('contact.html')
-
-@bp.route('/api/contact', methods=['POST'])
-def contact_submit():
-    data = request.get_json()
-    
-    # Create email message
-    msg = MIMEText(f"From: {data['name']} ({data['email']})\n\n{data['message']}")
-    msg['Subject'] = f"Portfolio Contact: {data['name']}"
-    msg['From'] = app.config['MAIL_USERNAME']
-    msg['To'] = 'brian.boler@example.com'
-
-    try:
-        # Send email
-        with smtplib.SMTP(app.config['MAIL_SERVER'], app.config['MAIL_PORT']) as server:
-            if app.config['MAIL_USE_TLS']:
-                server.starttls()
-            server.login(app.config['MAIL_USERNAME'], app.config['MAIL_PASSWORD'])
-            server.send_message(msg)
-        return jsonify({'status': 'success'})
-    except Exception as e:
-        return jsonify({'status': 'error', 'message': str(e)}), 500 
-
-@bp.route('/blog')
-def blog():
-    posts = []
-    blog_dir = os.path.join(app.static_folder, 'blog')
-    for filename in os.listdir(blog_dir):
-        if filename.endswith('.md'):
-            with open(os.path.join(blog_dir, filename)) as f:
-                content = f.read()
-                html = markdown2.markdown(content, extras=['metadata'])
-                posts.append({
-                    'slug': filename[:-3],
-                    'title': html.metadata.get('title', 'Untitled'),
-                    'date': html.metadata.get('date', ''),
-                    'preview': html.metadata.get('preview', ''),
-                    'content': html
-                })
-    posts.sort(key=lambda x: x['date'], reverse=True)
-    return render_template('blog.html', posts=posts)
-
-@bp.route('/blog/<slug>')
-def blog_post(slug):
-    with open(os.path.join(app.static_folder, 'blog', f'{slug}.md')) as f:
-        content = f.read()
-        html = markdown2.markdown(content, extras=['metadata'])
-        post = {
-            'slug': slug,
-            'title': html.metadata.get('title', 'Untitled'),
-            'date': html.metadata.get('date', ''),
-            'content': html
-        }
-    return render_template('blog_post.html', post=post) 
+    return render_template('skills.html', skills=skills) 

@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="resume-header">
+    <h1>Resume</h1>
+    <a href="{{ url_for('static', filename='resume.pdf') }}" class="btn btn-primary" download>
+        <i data-feather="download"></i> Download PDF
+    </a>
+</div>
 <section class="resume-section">
     <div class="container">
-        <div class="resume-header">
-            <h1>Resume</h1>
-            <a href="{{ url_for('static', filename='resume.pdf') }}" class="btn btn-primary" download>
-                <i data-feather="download"></i> Download PDF
-            </a>
-        </div>
         <div class="resume-content">
             <!-- Education Section -->
             <div class="resume-section">
