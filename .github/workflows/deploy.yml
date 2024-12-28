@@ -23,6 +23,7 @@ jobs:
       - name: Build static site
         run: |
           python freeze.py
+          mkdir -p build/static
           cp -r app/static/* build/static/
           touch build/.nojekyll
 
