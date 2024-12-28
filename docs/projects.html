@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Brian Boler</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="index.html" class="nav-logo">
+                <i data-feather="code"></i>
+                <span>Brian Boler</span>
+            </a>
+            <div class="nav-links">
+                <a href="projects.html">Projects</a>
+                <a href="experience.html">Experience</a>
+                <a href="skills.html">Skills</a>
+                <a href="resume.html">Resume</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="welcome-section">
+            <h1>Featured Projects</h1>
+            <p class="subtitle">Showcase of my technical work</p>
+        </div>
+
+        <div class="project-grid">
+            <div class="card project-card">
+                <div class="project-icon">
+                    <i data-feather="cpu"></i>
+                </div>
+                <div class="project-content">
+                    <h3>Machine Learning Pipeline</h3>
+                    <p>Automated ML pipeline for data processing and model training</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">TensorFlow</span>
+                        <span class="tech-tag">Docker</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/brianboler/ml-pipeline" target="_blank" class="btn btn-sm">
+                            <i data-feather="github"></i> View Code
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card project-card">
+                <div class="project-icon">
+                    <i data-feather="bar-chart-2"></i>
+                </div>
+                <div class="project-content">
+                    <h3>Data Visualization Dashboard</h3>
+                    <p>Interactive dashboard for complex data analysis</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">D3.js</span>
+                        <span class="tech-tag">Node.js</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/brianboler/data-viz" target="_blank" class="btn btn-sm">
+                            <i data-feather="github"></i> View Code
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        feather.replace();
+    </script>
+</body>
+</html> 
