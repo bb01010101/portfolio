@@ -1,44 +1,41 @@
 {% extends "base.html" %}
 
-{% block content %}
-<div class="resume-header">
-    <h1>Resume</h1>
-    <a href="{{ url_for('static', filename='resume.pdf') }}" class="btn btn-primary" download>
-        <i data-feather="download"></i> Download PDF
-    </a>
-</div>
-<section class="resume-section">
-    <div class="container">
-        <div class="resume-content">
-            <!-- Education Section -->
-            <div class="resume-section">
-                <h2>Education</h2>
-                <div class="education-item">
-                    <h3>Master of Science in Computer Science</h3>
-                    <p>University Name, 2018-2020</p>
-                    <p>Specialization in Machine Learning and Data Science</p>
-                </div>
-            </div>
+{% block title %}Resume - Brian Boler{% endblock %}
 
-            <!-- Skills Section -->
-            <div class="resume-section">
-                <h2>Technical Skills</h2>
-                <div class="skills-container">
-                    <div class="skill-group">
-                        <h3>Programming Languages</h3>
-                        <p>Python, JavaScript, Java, SQL, R</p>
-                    </div>
-                    <div class="skill-group">
-                        <h3>Frameworks & Libraries</h3>
-                        <p>TensorFlow, PyTorch, React, Flask, Django</p>
-                    </div>
-                    <div class="skill-group">
-                        <h3>Tools & Technologies</h3>
-                        <p>Docker, AWS, Git, Linux, MongoDB</p>
-                    </div>
-                </div>
-            </div>
+{% block content %}
+<div class="welcome-section">
+    <h1>Resume</h1>
+    <p class="subtitle">My professional experience and qualifications</p>
+</div>
+
+<div class="card-grid">
+    <div class="card">
+        <h2>Experience</h2>
+        <div class="experience-item">
+            <h3>Senior Software Engineer</h3>
+            <p class="period">2020 - Present</p>
+            <p>Leading development of machine learning systems and data pipelines.</p>
         </div>
     </div>
-</section>
+
+    <div class="card">
+        <h2>Education</h2>
+        <div class="education-item">
+            <h3>Computer Science Degree</h3>
+            <p class="period">2016 - 2020</p>
+            <p>Focus on Machine Learning and Data Science</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Skills</h2>
+        <div class="skill-tags">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Machine Learning</span>
+            <span class="tech-tag">Data Science</span>
+            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">SQL</span>
+        </div>
+    </div>
+</div>
 {% endblock %} 
