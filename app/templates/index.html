@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero-content">
+        <h1 class="hero-title">Brian Boler</h1>
+        <h2 class="hero-subtitle">Software Engineer & Data Scientist</h2>
+        <p class="hero-description">Building innovative solutions with AI and Machine Learning</p>
+        <div class="hero-cta">
+            <a href="{{ url_for('main.projects') }}" class="btn btn-primary">View Projects</a>
+            <a href="{{ url_for('main.resume') }}" class="btn btn-secondary">Download Resume</a>
+        </div>
+    </div>
+</section>
+
+<section class="skills-section">
+    <div class="container">
+        <h2>Skills & Expertise</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>Languages</h3>
+                <ul>
+                    <li>Python</li>
+                    <li>JavaScript</li>
+                    <li>Java</li>
+                    <li>SQL</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Frameworks</h3>
+                <ul>
+                    <li>TensorFlow</li>
+                    <li>PyTorch</li>
+                    <li>React</li>
+                    <li>Flask</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Tools</h3>
+                <ul>
+                    <li>Docker</li>
+                    <li>AWS</li>
+                    <li>Git</li>
+                    <li>Linux</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %} 

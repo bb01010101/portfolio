@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Brian Boler - Portfolio{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="{{ url_for('main.index') }}" class="nav-logo">Brian Boler</a>
+            <div class="nav-links">
+                <a href="{{ url_for('main.projects') }}">Projects</a>
+                <a href="{{ url_for('main.experience') }}">Experience</a>
+                <a href="{{ url_for('main.resume') }}">Resume</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="https://github.com/brianboler" target="_blank"><i data-feather="github"></i></a>
+                <a href="https://linkedin.com/in/brianboler" target="_blank"><i data-feather="linkedin"></i></a>
+                <a href="mailto:brian.boler@example.com"><i data-feather="mail"></i></a>
+            </div>
+            <p>&copy; 2024 Brian Boler. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        feather.replace();
+    </script>
+    {% block scripts %}{% endblock %}
+</body>
+</html> 

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="resume-section">
+    <div class="container">
+        <div class="resume-header">
+            <h1>Resume</h1>
+            <a href="{{ url_for('static', filename='resume.pdf') }}" class="btn btn-primary" download>
+                <i data-feather="download"></i> Download PDF
+            </a>
+        </div>
+        <div class="resume-content">
+            <!-- Education Section -->
+            <div class="resume-section">
+                <h2>Education</h2>
+                <div class="education-item">
+                    <h3>Master of Science in Computer Science</h3>
+                    <p>University Name, 2018-2020</p>
+                    <p>Specialization in Machine Learning and Data Science</p>
+                </div>
+            </div>
+
+            <!-- Skills Section -->
+            <div class="resume-section">
+                <h2>Technical Skills</h2>
+                <div class="skills-container">
+                    <div class="skill-group">
+                        <h3>Programming Languages</h3>
+                        <p>Python, JavaScript, Java, SQL, R</p>
+                    </div>
+                    <div class="skill-group">
+                        <h3>Frameworks & Libraries</h3>
+                        <p>TensorFlow, PyTorch, React, Flask, Django</p>
+                    </div>
+                    <div class="skill-group">
+                        <h3>Tools & Technologies</h3>
+                        <p>Docker, AWS, Git, Linux, MongoDB</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %} 
